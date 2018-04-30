@@ -14,6 +14,33 @@ Professor=  (car(cdadar bd1))
 ;INICIO---------------------------------------------------------------------
 (setq bd1 'nil)
 
+;VINCULO PROF-DISC----------------------------------------------------------
+(defun VINCULAR (PROFESSORES DICIPLINAS BD)
+
+	(if (null (car BD))
+		nil
+		(	(if (eql DICIPLINAS (car bd))
+			t
+			(VINCULAR PROFESSORES DICIPLINAS (cdr BD))
+			)
+		)
+	)
+	(PERCORRE_PROF (cdadr BD))
+	
+	(cons (BD) (PROFESSORES))
+)
+
+;PERCORRE_PROF--------------------------------------------------------------
+(defun PERCORRE_PROF (BD)
+	(if (null (cdr BD))
+		nil
+		((if (null (cdr BD))
+			t
+			(PERCORRE_PROF (cdr BD))
+		))
+	)
+)
+
 ;MATRICULA COM BD1 VAZIA----------------------------------------------------
 (defun LISTA_VAZIA(ALUNOS DISCIPLINAS BD)
 	(if(null (cdr DISCIPLINAS))
@@ -91,14 +118,3 @@ Professor=  (car(cdadar bd1))
 (Matricular '(A1 A2 A3) '(D1 D2 D3) BD1)
 
 ;REMOVE DUPLICADOS----------------------------------------------------------
-
-
-
-
-
-____________________________________________________________________________
-
-
-
-
-
